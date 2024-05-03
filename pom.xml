@@ -8,6 +8,9 @@
     <artifactId>dkpp</artifactId>
     <version>${dkpp.version}</version>
     <name>dkpp</name>
+    <modules>
+        <module>dkpp-nacos</module>
+    </modules>
     <packaging>pom</packaging>
     <description>dkpp</description>
 
