@@ -16,9 +16,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {ConfigProvider, Dialog, Field, Form, Input, Select} from '@alifd/next';
-import {searchUsers} from '../../../reducers/authority';
+import { connect } from 'react-redux';
+import { Field, Form, Input, Dialog, ConfigProvider, Select } from '@alifd/next';
+import { searchUsers } from '../../../reducers/authority';
 
 const FormItem = Form.Item;
 

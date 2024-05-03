@@ -25,6 +25,9 @@ import com.alibaba.nacos.common.tls.SelfHostnameVerifier;
 import com.alibaba.nacos.common.tls.TlsFileWatcher;
 import com.alibaba.nacos.common.tls.TlsHelper;
 import com.alibaba.nacos.common.tls.TlsSystemConfig;
+
+import java.util.function.BiConsumer;
+
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -50,7 +53,6 @@ import javax.net.ssl.SSLContext;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.function.BiConsumer;
 
 /**
  * AbstractHttpClientFactory Let the creator only specify the http client config.

@@ -19,7 +19,12 @@ package com.alibaba.nacos.naming.misc;
 import com.alibaba.nacos.sys.env.EnvUtil;
 import org.springframework.stereotype.Component;
 
-import static com.alibaba.nacos.naming.constants.Constants.*;
+import static com.alibaba.nacos.naming.constants.Constants.DATA_WARMUP;
+import static com.alibaba.nacos.naming.constants.Constants.EMPTY_SERVICE_CLEAN_INTERVAL;
+import static com.alibaba.nacos.naming.constants.Constants.EMPTY_SERVICE_EXPIRED_TIME;
+import static com.alibaba.nacos.naming.constants.Constants.EXPIRED_METADATA_CLEAN_INTERVAL;
+import static com.alibaba.nacos.naming.constants.Constants.EXPIRED_METADATA_EXPIRED_TIME;
+import static com.alibaba.nacos.naming.constants.Constants.EXPIRE_INSTANCE;
 
 /**
  * Stores some configurations for Distro protocol.

@@ -20,7 +20,12 @@ import com.alibaba.nacos.consistency.serialize.JacksonSerializer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class SerializeFactoryTest {

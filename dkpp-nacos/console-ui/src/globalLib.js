@@ -16,8 +16,8 @@
 
 import projectConfig from './config';
 import $ from 'jquery';
-import {Message} from '@alifd/next';
-import {LOGINPAGE_ENABLED} from './constants';
+import { Message } from '@alifd/next';
+import { LOGINPAGE_ENABLED } from './constants';
 
 function goLogin() {
   const url = window.location.href;

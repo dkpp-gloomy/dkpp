@@ -22,8 +22,15 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static com.alibaba.nacos.common.utils.StringUtils.*;
-import static org.junit.Assert.*;
+import static com.alibaba.nacos.common.utils.StringUtils.defaultIfEmpty;
+import static com.alibaba.nacos.common.utils.StringUtils.isNotBlank;
+import static com.alibaba.nacos.common.utils.StringUtils.isNotEmpty;
+import static com.alibaba.nacos.common.utils.StringUtils.join;
+import static com.alibaba.nacos.common.utils.StringUtils.substringBetween;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class StringUtilsTest {
     

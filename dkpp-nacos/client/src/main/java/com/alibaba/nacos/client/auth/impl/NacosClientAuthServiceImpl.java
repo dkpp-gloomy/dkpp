@@ -18,11 +18,11 @@ package com.alibaba.nacos.client.auth.impl;
 
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.client.auth.impl.process.HttpLoginProcessor;
-import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.plugin.auth.api.LoginIdentityContext;
-import com.alibaba.nacos.plugin.auth.api.RequestResource;
+import com.alibaba.nacos.client.auth.impl.process.HttpLoginProcessor;
 import com.alibaba.nacos.plugin.auth.spi.client.AbstractClientAuthService;
+import com.alibaba.nacos.plugin.auth.api.RequestResource;
+import com.alibaba.nacos.common.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

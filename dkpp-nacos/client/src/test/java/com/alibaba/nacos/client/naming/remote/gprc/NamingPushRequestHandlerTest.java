@@ -27,7 +27,9 @@ import com.alibaba.nacos.client.naming.cache.ServiceInfoHolder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class NamingPushRequestHandlerTest {
     

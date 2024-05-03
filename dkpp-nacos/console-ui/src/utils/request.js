@@ -16,8 +16,9 @@
 
 import axios from 'axios';
 import qs from 'qs';
-import {Message} from '@alifd/next';
-import {isPlainObject} from './nacosutil';
+import { Message } from '@alifd/next';
+import { browserHistory } from 'react-router';
+import { isPlainObject } from './nacosutil';
 // import { SUCCESS_RESULT_CODE } from '../constants';
 
 const API_GENERAL_ERROR_MESSAGE = 'Request error, please try again later!';

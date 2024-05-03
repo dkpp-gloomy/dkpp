@@ -26,7 +26,6 @@ import com.alibaba.nacos.common.log.NacosLogbackConfigurator;
 import com.alibaba.nacos.common.spi.NacosServiceLoader;
 import com.alibaba.nacos.common.utils.ResourceUtils;
 import org.slf4j.LoggerFactory;
-
 import java.util.Collection;
 import java.util.stream.Collectors;
 

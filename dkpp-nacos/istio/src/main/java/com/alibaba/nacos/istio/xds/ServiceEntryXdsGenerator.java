@@ -27,8 +27,7 @@ import istio.networking.v1alpha3.ServiceEntryOuterClass.ServiceEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.alibaba.nacos.istio.api.ApiConstants.MCP_RESOURCE_PROTO;
-import static com.alibaba.nacos.istio.api.ApiConstants.SERVICE_ENTRY_PROTO;
+import static com.alibaba.nacos.istio.api.ApiConstants.*;
 
 /**
  * @author special.fy

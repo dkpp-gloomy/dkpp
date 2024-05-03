@@ -18,19 +18,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  Collapse,
-  ConfigProvider,
-  Dialog,
   Field,
+  Tag,
+  Collapse,
   Form,
   Grid,
   Input,
   Loading,
   Pagination,
   Table,
-  Tag,
+  Dialog,
+  ConfigProvider,
 } from '@alifd/next';
-import {request} from '../../../globalLib';
+import { request } from '../../../globalLib';
 import RegionGroup from '../../../components/RegionGroup';
 import axios from 'axios';
 import PageTitle from '../../../components/PageTitle';

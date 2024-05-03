@@ -15,14 +15,14 @@
  */
 
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {ConfigProvider, Dropdown, Menu} from '@alifd/next';
+import { connect } from 'react-redux';
+import { ConfigProvider, Dropdown, Menu } from '@alifd/next';
 import siteConfig from '../config';
-import {changeLanguage} from '@/reducers/locale';
+import { changeLanguage } from '@/reducers/locale';
 import PasswordReset from '../pages/AuthorityControl/UserManagement/PasswordReset';
-import {passwordReset} from '../reducers/authority';
+import { passwordReset } from '../reducers/authority';
 
 import './index.scss';
 

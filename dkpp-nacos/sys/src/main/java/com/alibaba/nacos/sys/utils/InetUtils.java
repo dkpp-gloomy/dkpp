@@ -28,7 +28,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -36,7 +40,11 @@ import java.util.Objects;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static com.alibaba.nacos.sys.env.Constants.*;
+import static com.alibaba.nacos.sys.env.Constants.IP_ADDRESS;
+import static com.alibaba.nacos.sys.env.Constants.NACOS_SERVER_IP;
+import static com.alibaba.nacos.sys.env.Constants.PREFER_HOSTNAME_OVER_IP;
+import static com.alibaba.nacos.sys.env.Constants.SYSTEM_PREFER_HOSTNAME_OVER_IP;
+import static com.alibaba.nacos.sys.env.Constants.USE_ONLY_SITE_INTERFACES;
 
 /**
  * Network card operation tool class.

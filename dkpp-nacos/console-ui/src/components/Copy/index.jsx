@@ -15,8 +15,8 @@
  */
 
 import React from 'react';
-import {withRouter} from 'react-router-dom';
-import {Icon, Message} from '@alifd/next';
+import { withRouter } from 'react-router-dom';
+import { Icon, Message } from '@alifd/next';
 import PropTypes from 'prop-types';
 
 // 创建假元素

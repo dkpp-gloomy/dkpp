@@ -15,7 +15,7 @@
  */
 
 import request from '../utils/request';
-import {GET_NOTICE, GET_STATE, LOGINPAGE_ENABLED} from '../constants';
+import { GET_STATE, LOGINPAGE_ENABLED, GET_NOTICE } from '../constants';
 
 const initialState = {
   version: null,

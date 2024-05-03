@@ -16,7 +16,11 @@
 
 package com.alibaba.nacos.client.config.filter.impl;
 
-import com.alibaba.nacos.api.config.filter.*;
+import com.alibaba.nacos.api.config.filter.IConfigContext;
+import com.alibaba.nacos.api.config.filter.IConfigFilter;
+import com.alibaba.nacos.api.config.filter.IConfigFilterChain;
+import com.alibaba.nacos.api.config.filter.IConfigRequest;
+import com.alibaba.nacos.api.config.filter.IConfigResponse;
 import com.alibaba.nacos.api.exception.NacosException;
 import org.junit.Assert;
 import org.junit.Test;

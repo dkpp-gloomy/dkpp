@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {Button, Card, ConfigProvider, Form, Input, Tag} from '@alifd/next';
+import { Input, ConfigProvider, Button, Form, Tag, Card } from '@alifd/next';
+import { isDiff } from './util';
 
 const { Group: TagGroup, Closeable: CloseableTag } = Tag;
 const FormItem = Form.Item;

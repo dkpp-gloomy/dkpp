@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import {Message} from '@alifd/next';
+import { Message } from '@alifd/next';
 import request from '../utils/request';
-import {PERMISSIONS_LIST, ROLE_LIST, USER_LIST} from '../constants';
+import { UPDATE_USER, SIGN_IN, USER_LIST, ROLE_LIST, PERMISSIONS_LIST } from '../constants';
 
 const initialState = {
   users: {

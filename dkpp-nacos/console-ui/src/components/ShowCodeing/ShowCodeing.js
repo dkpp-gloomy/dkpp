@@ -16,8 +16,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getParams} from '../../globalLib';
-import {ConfigProvider, Dialog, Loading, Tab} from '@alifd/next';
+import { getParams } from '../../globalLib';
+import { ConfigProvider, Dialog, Loading, Tab } from '@alifd/next';
 
 import './index.scss';
 

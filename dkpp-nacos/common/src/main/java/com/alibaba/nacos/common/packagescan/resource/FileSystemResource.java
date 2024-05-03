@@ -19,14 +19,21 @@ package com.alibaba.nacos.common.packagescan.resource;
 import com.alibaba.nacos.common.utils.AbstractAssert;
 import com.alibaba.nacos.common.utils.StringUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.URL;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.nio.file.FileSystem;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Copy from https://github.com/spring-projects/spring-framework.git, with less modifications

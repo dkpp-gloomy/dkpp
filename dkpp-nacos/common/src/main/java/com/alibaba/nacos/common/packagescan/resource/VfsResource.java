@@ -16,8 +16,8 @@
 
 package com.alibaba.nacos.common.packagescan.resource;
 
-import com.alibaba.nacos.common.packagescan.util.NestedIoException;
 import com.alibaba.nacos.common.utils.AbstractAssert;
+import com.alibaba.nacos.common.packagescan.util.NestedIoException;
 
 import java.io.File;
 import java.io.IOException;

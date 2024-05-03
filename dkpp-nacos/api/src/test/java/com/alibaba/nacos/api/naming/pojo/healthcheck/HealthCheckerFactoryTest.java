@@ -22,7 +22,9 @@ import com.alibaba.nacos.api.naming.pojo.healthcheck.impl.Tcp;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class HealthCheckerFactoryTest {
     

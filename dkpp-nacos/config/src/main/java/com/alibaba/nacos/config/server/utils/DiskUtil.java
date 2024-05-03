@@ -18,10 +18,10 @@ package com.alibaba.nacos.config.server.utils;
 
 import com.alibaba.nacos.common.utils.IoUtils;
 import com.alibaba.nacos.common.utils.MD5Utils;
-import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.config.server.constant.Constants;
 import com.alibaba.nacos.sys.env.EnvUtil;
 import org.apache.commons.io.FileUtils;
+import com.alibaba.nacos.common.utils.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;

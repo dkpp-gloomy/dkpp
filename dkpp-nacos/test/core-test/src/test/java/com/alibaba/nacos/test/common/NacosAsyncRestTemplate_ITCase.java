@@ -28,6 +28,7 @@ import com.alibaba.nacos.common.http.param.Query;
 import com.alibaba.nacos.common.model.RestResult;
 import com.alibaba.nacos.naming.misc.HttpClientManager.ProcessorHttpClientFactory;
 import com.alibaba.nacos.sys.env.EnvUtil;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

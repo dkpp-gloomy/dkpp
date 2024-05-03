@@ -16,7 +16,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import './index.scss';
 
 @connect(state => ({ ...state.locale }))

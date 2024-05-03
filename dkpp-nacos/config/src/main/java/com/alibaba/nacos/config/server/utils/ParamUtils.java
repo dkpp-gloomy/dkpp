@@ -16,13 +16,13 @@
 
 package com.alibaba.nacos.config.server.utils;
 
+import java.util.Map;
+
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.exception.api.NacosApiException;
 import com.alibaba.nacos.api.model.v2.ErrorCode;
 import com.alibaba.nacos.common.utils.StringUtils;
 import org.springframework.http.HttpStatus;
-
-import java.util.Map;
 
 /**
  * Parameter validity check util.

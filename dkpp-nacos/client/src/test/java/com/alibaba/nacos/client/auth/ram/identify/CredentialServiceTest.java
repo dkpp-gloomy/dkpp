@@ -24,7 +24,9 @@ import org.junit.Test;
 
 import java.lang.reflect.Field;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class CredentialServiceTest extends TestCase {
     

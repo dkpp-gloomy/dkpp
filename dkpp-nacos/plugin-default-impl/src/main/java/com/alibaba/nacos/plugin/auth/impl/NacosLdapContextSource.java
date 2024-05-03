@@ -20,8 +20,6 @@ import com.alibaba.nacos.common.tls.TlsHelper;
 import com.alibaba.nacos.core.utils.Loggers;
 import org.springframework.ldap.core.support.LdapContextSource;
 
-import javax.naming.Context;
-import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -30,6 +28,8 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.naming.Context;
+import javax.net.ssl.SSLSocketFactory;
 
 /**
  * NacosLdapContextSource.

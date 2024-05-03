@@ -47,7 +47,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.alibaba.nacos.naming.constants.RequestConstant.*;
+import static com.alibaba.nacos.naming.constants.RequestConstant.HEALTHY_KEY;
+import static com.alibaba.nacos.naming.constants.RequestConstant.IP_KEY;
+import static com.alibaba.nacos.naming.constants.RequestConstant.PORT_KEY;
+import static com.alibaba.nacos.naming.constants.RequestConstant.VALID_KEY;
 
 /**
  * Health status related operation controller.

@@ -24,7 +24,11 @@ import com.alibaba.nacos.common.trace.publisher.TraceEventPublisherFactory;
 import com.alibaba.nacos.plugin.trace.NacosTracePluginManager;
 import com.alibaba.nacos.plugin.trace.spi.NacosTraceSubscriber;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**

@@ -32,7 +32,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static com.alibaba.nacos.consistency.DataOperation.*;
+import static com.alibaba.nacos.consistency.DataOperation.ADD;
+import static com.alibaba.nacos.consistency.DataOperation.DELETE;
+import static com.alibaba.nacos.consistency.DataOperation.QUERY;
+import static com.alibaba.nacos.consistency.DataOperation.SNAPSHOT;
+import static com.alibaba.nacos.consistency.DataOperation.VERIFY;
 
 /**
  * {@link DistroDataRequestHandler} unit tests.

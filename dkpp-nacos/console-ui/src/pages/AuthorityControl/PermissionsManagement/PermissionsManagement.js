@@ -16,10 +16,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, ConfigProvider, Dialog, Form, Input, Pagination, Switch, Table,} from '@alifd/next';
-import {connect} from 'react-redux';
-import {createPermission, deletePermission, getPermissions} from '../../../reducers/authority';
-import {getNamespaces} from '../../../reducers/namespace';
+import {
+  Button,
+  Dialog,
+  Pagination,
+  Table,
+  ConfigProvider,
+  Form,
+  Input,
+  Switch,
+} from '@alifd/next';
+import { connect } from 'react-redux';
+import { getPermissions, createPermission, deletePermission } from '../../../reducers/authority';
+import { getNamespaces } from '../../../reducers/namespace';
 import RegionGroup from '../../../components/RegionGroup';
 import NewPermissions from './NewPermissions';
 

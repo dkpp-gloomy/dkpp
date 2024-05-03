@@ -16,9 +16,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ConfigProvider, Field, Form, Loading, Message, Pagination, Select, Table,} from '@alifd/next';
+import {
+  ConfigProvider,
+  Field,
+  Form,
+  Loading,
+  Pagination,
+  Select,
+  Table,
+  Message,
+} from '@alifd/next';
 import RegionGroup from 'components/RegionGroup';
-import {getParams, request, setParams} from '@/globalLib';
+import { getParams, setParams, request } from '@/globalLib';
 
 import './index.scss';
 import DiffEditorDialog from '../../../components/DiffEditorDialog';

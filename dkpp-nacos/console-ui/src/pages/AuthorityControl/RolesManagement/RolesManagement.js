@@ -16,9 +16,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, ConfigProvider, Dialog, Form, Input, Pagination, Switch, Table,} from '@alifd/next';
-import {connect} from 'react-redux';
-import {createRole, deleteRole, getRoles} from '../../../reducers/authority';
+import {
+  Button,
+  Dialog,
+  Pagination,
+  Table,
+  ConfigProvider,
+  Form,
+  Switch,
+  Input,
+} from '@alifd/next';
+import { connect } from 'react-redux';
+import { getRoles, createRole, deleteRole } from '../../../reducers/authority';
 import RegionGroup from '../../../components/RegionGroup';
 import NewRole from './NewRole';
 

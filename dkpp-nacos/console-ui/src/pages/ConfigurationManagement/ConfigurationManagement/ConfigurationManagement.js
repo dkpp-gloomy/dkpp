@@ -28,28 +28,29 @@ import {
   Icon,
   Input,
   Menu,
-  MenuButton,
-  Message,
   Pagination,
   Select,
-  Switch,
   Table,
   Upload,
+  Message,
+  MenuButton,
+  Box,
+  Switch,
 } from '@alifd/next';
 import BatchHandle from 'components/BatchHandle';
 import RegionGroup from 'components/RegionGroup';
 import ShowCodeing from 'components/ShowCodeing';
 import DeleteDialog from 'components/DeleteDialog';
 import DashboardCard from './DashboardCard';
-import {getParams, request, setParams} from '@/globalLib';
-import {goLogin} from '../../../globalLib';
-import {connect} from 'react-redux';
-import {getConfigs, getConfigsV2} from '../../../reducers/configuration';
+import { getParams, setParams, request } from '@/globalLib';
+import { goLogin } from '../../../globalLib';
+import { connect } from 'react-redux';
+import { getConfigs, getConfigsV2 } from '../../../reducers/configuration';
 import PageTitle from '../../../components/PageTitle';
 import QueryResult from '../../../components/QueryResult';
 
 import './index.scss';
-import {GLOBAL_PAGE_SIZE_LIST, LANGUAGE_KEY, LOGINPAGE_ENABLED} from '../../../constants';
+import { LANGUAGE_KEY, GLOBAL_PAGE_SIZE_LIST, LOGINPAGE_ENABLED } from '../../../constants';
 
 const { Item } = MenuButton;
 const { Panel } = Collapse;

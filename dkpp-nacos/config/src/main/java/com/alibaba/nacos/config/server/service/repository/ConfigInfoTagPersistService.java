@@ -16,7 +16,11 @@
 
 package com.alibaba.nacos.config.server.service.repository;
 
-import com.alibaba.nacos.config.server.model.*;
+import com.alibaba.nacos.config.server.model.ConfigInfo;
+import com.alibaba.nacos.config.server.model.ConfigInfo4Tag;
+import com.alibaba.nacos.config.server.model.ConfigInfoTagWrapper;
+import com.alibaba.nacos.config.server.model.ConfigInfoWrapper;
+import com.alibaba.nacos.config.server.model.Page;
 
 import java.sql.Timestamp;
 

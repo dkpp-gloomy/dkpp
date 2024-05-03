@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {getParams, request} from './globalLib';
+import { getParams, request } from './globalLib';
 
 window.edasprefix = 'acm'; // 固定的edas网关需要的项目名
 

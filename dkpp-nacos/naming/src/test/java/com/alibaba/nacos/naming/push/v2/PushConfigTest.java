@@ -16,8 +16,8 @@
 
 package com.alibaba.nacos.naming.push.v2;
 
-import com.alibaba.nacos.common.event.ServerConfigChangeEvent;
 import com.alibaba.nacos.common.notify.NotifyCenter;
+import com.alibaba.nacos.common.event.ServerConfigChangeEvent;
 import com.alibaba.nacos.naming.constants.PushConstants;
 import com.alibaba.nacos.sys.env.EnvUtil;
 import org.junit.Before;

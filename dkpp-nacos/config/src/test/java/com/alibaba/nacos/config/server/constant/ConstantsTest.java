@@ -19,7 +19,16 @@ package com.alibaba.nacos.config.server.constant;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.alibaba.nacos.config.server.constant.Constants.*;
+import static com.alibaba.nacos.config.server.constant.Constants.CAPACITY_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.COMMUNICATION_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.CONFIG_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.HEALTH_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.HISTORY_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.LISTENER_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.METRICS_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.NAMESPACE_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.OPS_CONTROLLER_PATH;
+import static com.alibaba.nacos.config.server.constant.Constants.RECV_WAIT_TIMEOUT;
 
 public class ConstantsTest {
     

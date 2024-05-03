@@ -16,19 +16,18 @@
 
 package com.alibaba.nacos.test.core.code;
 
+import static org.junit.Assert.assertEquals;
+
 import com.alibaba.nacos.core.code.ControllerMethodsCache;
 import com.alibaba.nacos.sys.env.EnvUtil;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.connector.Request;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * @author horizonzy

@@ -18,8 +18,8 @@ package com.alibaba.nacos.client.logging;
 
 import com.alibaba.nacos.client.logging.log4j2.Log4J2NacosLogging;
 import com.alibaba.nacos.client.logging.logback.LogbackNacosLogging;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /**
  * nacos logging.

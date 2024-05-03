@@ -17,7 +17,11 @@
 package com.alibaba.nacos.naming.core;
 
 import com.alibaba.nacos.common.notify.NotifyCenter;
-import com.alibaba.nacos.core.cluster.*;
+import com.alibaba.nacos.core.cluster.MemberChangeListener;
+import com.alibaba.nacos.core.cluster.MemberUtil;
+import com.alibaba.nacos.core.cluster.MembersChangeEvent;
+import com.alibaba.nacos.core.cluster.NodeState;
+import com.alibaba.nacos.core.cluster.ServerMemberManager;
 import com.alibaba.nacos.naming.misc.Loggers;
 import com.alibaba.nacos.naming.misc.SwitchDomain;
 import com.alibaba.nacos.sys.env.EnvUtil;

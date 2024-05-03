@@ -15,7 +15,7 @@
  */
 
 import request from '../utils/request';
-import {GET_NAMESPACES} from '../constants';
+import { GET_NAMESPACES } from '../constants';
 
 const initialState = {
   namespaces: [],

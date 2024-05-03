@@ -18,15 +18,15 @@ package com.alibaba.nacos.client.auth.ram.injector;
 
 import com.alibaba.nacos.api.common.Constants;
 import com.alibaba.nacos.api.naming.utils.NamingUtils;
-import com.alibaba.nacos.client.auth.ram.RamContext;
 import com.alibaba.nacos.client.auth.ram.identify.IdentifyConstants;
 import com.alibaba.nacos.client.auth.ram.identify.StsConfig;
 import com.alibaba.nacos.client.auth.ram.identify.StsCredential;
 import com.alibaba.nacos.client.auth.ram.identify.StsCredentialHolder;
+import com.alibaba.nacos.plugin.auth.api.LoginIdentityContext;
+import com.alibaba.nacos.client.auth.ram.RamContext;
+import com.alibaba.nacos.plugin.auth.api.RequestResource;
 import com.alibaba.nacos.client.auth.ram.utils.SignUtil;
 import com.alibaba.nacos.common.utils.StringUtils;
-import com.alibaba.nacos.plugin.auth.api.LoginIdentityContext;
-import com.alibaba.nacos.plugin.auth.api.RequestResource;
 
 import static com.alibaba.nacos.client.utils.LogUtils.NAMING_LOGGER;
 

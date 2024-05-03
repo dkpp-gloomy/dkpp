@@ -15,7 +15,7 @@
  */
 
 import request from '../utils/request';
-import {GET_SUBSCRIBERS, REMOVE_SUBSCRIBERS} from '../constants';
+import { GET_SUBSCRIBERS, REMOVE_SUBSCRIBERS } from '../constants';
 
 const initialState = {
   subscribers: {},

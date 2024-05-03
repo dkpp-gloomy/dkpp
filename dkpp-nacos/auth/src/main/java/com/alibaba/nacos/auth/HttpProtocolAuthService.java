@@ -17,16 +17,16 @@
 package com.alibaba.nacos.auth;
 
 import com.alibaba.nacos.auth.annotation.Secured;
+import com.alibaba.nacos.plugin.auth.api.IdentityContext;
+import com.alibaba.nacos.plugin.auth.api.Resource;
 import com.alibaba.nacos.auth.config.AuthConfigs;
+import com.alibaba.nacos.plugin.auth.constant.SignType;
 import com.alibaba.nacos.auth.context.HttpIdentityContextBuilder;
 import com.alibaba.nacos.auth.parser.http.AbstractHttpResourceParser;
 import com.alibaba.nacos.auth.parser.http.ConfigHttpResourceParser;
 import com.alibaba.nacos.auth.parser.http.NamingHttpResourceParser;
 import com.alibaba.nacos.auth.util.Loggers;
 import com.alibaba.nacos.common.utils.StringUtils;
-import com.alibaba.nacos.plugin.auth.api.IdentityContext;
-import com.alibaba.nacos.plugin.auth.api.Resource;
-import com.alibaba.nacos.plugin.auth.constant.SignType;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

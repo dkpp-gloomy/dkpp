@@ -16,7 +16,11 @@
 
 package com.alibaba.nacos.client.naming.utils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Provides utility methods and decorators for {@link Collection} instances.

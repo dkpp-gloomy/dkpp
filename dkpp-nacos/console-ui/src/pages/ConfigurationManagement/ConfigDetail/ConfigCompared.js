@@ -16,10 +16,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ConfigProvider, Dialog, Field, Form, Input, Select} from '@alifd/next';
-import {connect} from 'react-redux';
-import {getNamespaces} from '../../../reducers/namespace';
-import {request} from '../../../globalLib';
+import { Field, Form, Input, Dialog, ConfigProvider, Select } from '@alifd/next';
+import { connect } from 'react-redux';
+import { getNamespaces } from '../../../reducers/namespace';
+import { request } from '../../../globalLib';
 
 const FormItem = Form.Item;
 const { Option } = Select;

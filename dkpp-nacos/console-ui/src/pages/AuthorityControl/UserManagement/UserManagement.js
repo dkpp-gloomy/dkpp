@@ -16,15 +16,24 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, ConfigProvider, Dialog, Form, Input, Pagination, Switch, Table,} from '@alifd/next';
-import {connect} from 'react-redux';
-import {createUser, deleteUser, getUsers, passwordReset} from '../../../reducers/authority';
+import {
+  Button,
+  Dialog,
+  Pagination,
+  Table,
+  ConfigProvider,
+  Form,
+  Input,
+  Switch,
+} from '@alifd/next';
+import { connect } from 'react-redux';
+import { getUsers, createUser, deleteUser, passwordReset } from '../../../reducers/authority';
 import RegionGroup from '../../../components/RegionGroup';
 import NewUser from './NewUser';
 import PasswordReset from './PasswordReset';
 
 import './UserManagement.scss';
-import {getParams} from '../../../globalLib';
+import { getParams } from '../../../globalLib';
 
 @connect(state => ({ users: state.authority.users }), { getUsers })
 @ConfigProvider.config

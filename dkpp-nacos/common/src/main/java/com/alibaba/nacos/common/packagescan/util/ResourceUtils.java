@@ -23,7 +23,11 @@ import com.alibaba.nacos.common.utils.StringUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Copy from https://github.com/spring-projects/spring-framework.git, with less modifications

@@ -16,7 +16,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ConfigProvider, Slider} from '@alifd/next';
+import { ConfigProvider, Slider } from '@alifd/next';
 
 @ConfigProvider.config
 class DashboardCard extends React.Component {

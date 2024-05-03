@@ -18,7 +18,20 @@ package com.alibaba.nacos.common.utils;
 
 import com.alibaba.nacos.api.common.Constants;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.CharArrayWriter;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;

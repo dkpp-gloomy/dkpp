@@ -29,7 +29,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HealthCheckCommonV2Test {

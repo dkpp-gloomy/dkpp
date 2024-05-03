@@ -24,7 +24,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * NacosJwtParserTest.

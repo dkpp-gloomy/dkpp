@@ -15,13 +15,13 @@
  */
 
 import React from 'react';
-import {Card, ConfigProvider, Field, Form, Input, Message} from '@alifd/next';
-import {withRouter} from 'react-router-dom';
+import { Card, Form, Input, Message, ConfigProvider, Field } from '@alifd/next';
+import { withRouter } from 'react-router-dom';
 
 import './index.scss';
 import Header from '../../layouts/Header';
 import PropTypes from 'prop-types';
-import {login} from '../../reducers/base';
+import { login } from '../../reducers/base';
 
 const FormItem = Form.Item;
 

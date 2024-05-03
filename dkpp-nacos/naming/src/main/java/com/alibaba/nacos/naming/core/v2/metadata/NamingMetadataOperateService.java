@@ -25,8 +25,8 @@ import com.alibaba.nacos.consistency.cp.CPProtocol;
 import com.alibaba.nacos.consistency.entity.Response;
 import com.alibaba.nacos.consistency.entity.WriteRequest;
 import com.alibaba.nacos.core.distributed.ProtocolManager;
-import com.alibaba.nacos.naming.constants.Constants;
 import com.alibaba.nacos.naming.core.v2.pojo.Service;
+import com.alibaba.nacos.naming.constants.Constants;
 import com.google.protobuf.ByteString;
 import org.springframework.stereotype.Component;
 

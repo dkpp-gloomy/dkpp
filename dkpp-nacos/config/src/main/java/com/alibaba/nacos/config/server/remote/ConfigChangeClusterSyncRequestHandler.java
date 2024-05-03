@@ -21,8 +21,8 @@ import com.alibaba.nacos.api.config.remote.response.cluster.ConfigChangeClusterS
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.remote.request.RequestMeta;
 import com.alibaba.nacos.config.server.service.dump.DumpService;
-import com.alibaba.nacos.core.control.TpsControl;
 import com.alibaba.nacos.core.remote.RequestHandler;
+import com.alibaba.nacos.core.control.TpsControl;
 import org.springframework.stereotype.Component;
 
 /**

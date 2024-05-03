@@ -25,7 +25,10 @@ import io.grpc.ServerTransportFilter;
 
 import java.net.InetSocketAddress;
 
-import static com.alibaba.nacos.core.remote.grpc.GrpcServerConstants.*;
+import static com.alibaba.nacos.core.remote.grpc.GrpcServerConstants.ATTR_TRANS_KEY_CONN_ID;
+import static com.alibaba.nacos.core.remote.grpc.GrpcServerConstants.ATTR_TRANS_KEY_LOCAL_PORT;
+import static com.alibaba.nacos.core.remote.grpc.GrpcServerConstants.ATTR_TRANS_KEY_REMOTE_IP;
+import static com.alibaba.nacos.core.remote.grpc.GrpcServerConstants.ATTR_TRANS_KEY_REMOTE_PORT;
 
 /**
  * AddressTransportFilter process remote address, local address and connection id attributes.

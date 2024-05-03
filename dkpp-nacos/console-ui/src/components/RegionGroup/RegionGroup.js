@@ -17,9 +17,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import {Button} from '@alifd/next';
+import { Button } from '@alifd/next';
 import NameSpaceList from '../NameSpaceList';
-import {request, setParams} from '../../globalLib';
+import { setParams, request } from '../../globalLib';
 import PageTitle from '../PageTitle';
 
 import './index.scss';

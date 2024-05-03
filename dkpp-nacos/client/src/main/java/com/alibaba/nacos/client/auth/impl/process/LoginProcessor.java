@@ -17,7 +17,6 @@
 package com.alibaba.nacos.client.auth.impl.process;
 
 import com.alibaba.nacos.plugin.auth.api.LoginIdentityContext;
-
 import java.util.Properties;
 
 /**

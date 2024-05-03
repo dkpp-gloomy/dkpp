@@ -16,14 +16,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {request} from '@/globalLib';
-import {Button, Card, ConfigProvider, Form, Input, Loading, Message} from '@alifd/next';
+import { request } from '@/globalLib';
+import { Input, Button, Card, ConfigProvider, Form, Loading, Message, Tag } from '@alifd/next';
 import EditServiceDialog from './EditServiceDialog';
 import EditClusterDialog from './EditClusterDialog';
 import InstanceTable from './InstanceTable';
-import {getParameter} from 'utils/nacosutil';
+import { getParameter } from 'utils/nacosutil';
 import MonacoEditor from 'components/MonacoEditor';
-import {MONACO_READONLY_OPTIONS} from './constant';
+import { MONACO_READONLY_OPTIONS, METADATA_ENTER } from './constant';
 import InstanceFilter from './InstanceFilter';
 import './ServiceDetail.scss';
 

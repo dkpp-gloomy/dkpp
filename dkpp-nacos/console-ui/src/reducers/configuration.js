@@ -15,7 +15,7 @@
  */
 
 import request from '../utils/request';
-import {GET_CONFIGURATION} from '../constants';
+import { GET_CONFIGURATION } from '../constants';
 
 const initialState = {
   configurations: [],

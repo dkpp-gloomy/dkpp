@@ -17,7 +17,6 @@
 package com.alibaba.nacos.naming.healthcheck.v2;
 
 import com.alibaba.nacos.common.task.AbstractExecuteTask;
-import com.alibaba.nacos.common.utils.RandomUtils;
 import com.alibaba.nacos.naming.core.v2.client.impl.IpPortBasedClient;
 import com.alibaba.nacos.naming.core.v2.metadata.ClusterMetadata;
 import com.alibaba.nacos.naming.core.v2.metadata.NamingMetadataManager;
@@ -30,6 +29,7 @@ import com.alibaba.nacos.naming.healthcheck.v2.processor.HealthCheckProcessorV2D
 import com.alibaba.nacos.naming.misc.Loggers;
 import com.alibaba.nacos.naming.misc.SwitchDomain;
 import com.alibaba.nacos.sys.utils.ApplicationUtils;
+import com.alibaba.nacos.common.utils.RandomUtils;
 
 import java.util.Optional;
 

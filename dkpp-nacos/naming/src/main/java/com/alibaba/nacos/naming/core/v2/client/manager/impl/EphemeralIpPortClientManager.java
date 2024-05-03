@@ -29,7 +29,11 @@ import com.alibaba.nacos.naming.core.v2.client.impl.IpPortBasedClient;
 import com.alibaba.nacos.naming.core.v2.client.manager.ClientManager;
 import com.alibaba.nacos.naming.core.v2.event.client.ClientEvent;
 import com.alibaba.nacos.naming.healthcheck.heartbeat.ClientBeatUpdateTask;
-import com.alibaba.nacos.naming.misc.*;
+import com.alibaba.nacos.naming.misc.ClientConfig;
+import com.alibaba.nacos.naming.misc.GlobalExecutor;
+import com.alibaba.nacos.naming.misc.Loggers;
+import com.alibaba.nacos.naming.misc.NamingExecuteTaskDispatcher;
+import com.alibaba.nacos.naming.misc.SwitchDomain;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 

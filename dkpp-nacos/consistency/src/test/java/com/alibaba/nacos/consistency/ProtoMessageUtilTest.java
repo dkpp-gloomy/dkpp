@@ -23,9 +23,9 @@ import com.alibaba.nacos.consistency.entity.WriteRequest;
 import com.google.protobuf.ByteString;
 import org.junit.Test;
 
-import java.nio.ByteBuffer;
-
 import static org.junit.Assert.assertEquals;
+
+import java.nio.ByteBuffer;
 
 public class ProtoMessageUtilTest {
     

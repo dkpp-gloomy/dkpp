@@ -16,8 +16,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getParams} from '../../../globalLib';
-import {generateUrl} from '../../../utils/nacosutil';
+import { getParams } from '../../../globalLib';
+import { generateUrl } from '../../../utils/nacosutil';
 import request from '../../../utils/request';
 import validateContent from 'utils/validateContent';
 import SuccessDialog from '../../../components/SuccessDialog';
@@ -26,18 +26,18 @@ import './index.scss';
 import {
   Balloon,
   Button,
-  Checkbox,
-  ConfigProvider,
   Dialog,
   Form,
-  Grid,
+  Checkbox,
   Icon,
   Input,
   Loading,
-  Message,
   Radio,
   Select,
   Tab,
+  Message,
+  Grid,
+  ConfigProvider,
 } from '@alifd/next';
 
 const { Row, Col } = Grid;
