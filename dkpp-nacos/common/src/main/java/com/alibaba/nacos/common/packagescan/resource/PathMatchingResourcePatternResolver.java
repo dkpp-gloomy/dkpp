@@ -16,9 +16,9 @@
 
 package com.alibaba.nacos.common.packagescan.resource;
 
+import com.alibaba.nacos.common.packagescan.util.AbstractAssert;
 import com.alibaba.nacos.common.packagescan.util.PathMatcher;
 import com.alibaba.nacos.common.packagescan.util.ResourceUtils;
-import com.alibaba.nacos.common.utils.AbstractAssert;
 import com.alibaba.nacos.common.utils.ClassUtils;
 import com.alibaba.nacos.common.utils.ReflectUtils;
 import com.alibaba.nacos.common.utils.StringUtils;
@@ -30,18 +30,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.net.JarURLConnection;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.net.URLConnection;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Enumeration;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.net.*;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.zip.ZipException;

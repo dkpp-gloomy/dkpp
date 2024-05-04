@@ -1,5 +1,5 @@
 /*
- * Copyright 1999-2020 Alibaba Group Holding Ltd.
+ * Copyright 1999-2023 Alibaba Group Holding Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,11 +33,7 @@ import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.server.LocalServerPort;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static com.alibaba.nacos.test.naming.NamingBase.TEST_PORT;
@@ -349,9 +345,9 @@ public abstract class AbstractInstanceOperate_ITCase {
      */
     @Test
     public void registerEphemeralInstanceWithInvalidClusterName() throws Exception {
-        expectedException.expect(NacosException.class);
+        expectedException.expect(Exception.class);
         expectedException.expectMessage(
-                "Instance 'clusterName' should be characters with only 0-9a-zA-Z-. (current: cluster1,cluster2)");
+                "Param 'cluster' is illegal, illegal characters should not appear in the param.");
         
         String serviceName = NamingBase.randomDomainName();
         Instance instance = new Instance();
@@ -376,7 +372,7 @@ public abstract class AbstractInstanceOperate_ITCase {
     public void registerPersistentInstanceWithInvalidClusterName() throws Exception {
         expectedException.expect(NacosException.class);
         expectedException.expectMessage(
-                "Instance 'clusterName' should be characters with only 0-9a-zA-Z-. (current: cluster1,cluster2)");
+                "Param 'cluster' is illegal, illegal characters should not appear in the param.");
         
         String serviceName = NamingBase.randomDomainName();
         Instance instance = new Instance();

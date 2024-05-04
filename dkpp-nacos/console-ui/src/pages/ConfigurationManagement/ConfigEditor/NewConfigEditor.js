@@ -16,8 +16,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getParams } from '../../../globalLib';
-import { generateUrl } from '../../../utils/nacosutil';
+import {getParams} from '../../../globalLib';
+import {generateUrl} from '../../../utils/nacosutil';
 import request from '../../../utils/request';
 import validateContent from 'utils/validateContent';
 import SuccessDialog from '../../../components/SuccessDialog';
@@ -26,18 +26,18 @@ import './index.scss';
 import {
   Balloon,
   Button,
+  Checkbox,
+  ConfigProvider,
   Dialog,
   Form,
-  Checkbox,
+  Grid,
   Icon,
   Input,
   Loading,
+  Message,
   Radio,
   Select,
   Tab,
-  Message,
-  Grid,
-  ConfigProvider,
 } from '@alifd/next';
 
 const { Row, Col } = Grid;
@@ -49,6 +49,7 @@ const LANGUAGE_LIST = [
   { value: 'yaml', label: 'YAML' },
   { value: 'html', label: 'HTML' },
   { value: 'properties', label: 'Properties' },
+  { value: 'toml', label: 'TOML' },
 ];
 
 const TAB_LIST = ['production', 'beta'];
@@ -137,7 +138,7 @@ class ConfigEditor extends React.Component {
       roundedSelection: false,
       readOnly: false,
       lineNumbersMinChars: true,
-      theme: 'vs-dark',
+      theme: 'vs-dark-enhanced',
       folding: true,
       showFoldingControls: 'always',
       cursorStyle: 'line',

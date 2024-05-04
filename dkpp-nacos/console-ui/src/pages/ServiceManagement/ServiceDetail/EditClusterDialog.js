@@ -16,9 +16,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { request } from '../../../globalLib';
-import { Dialog, Form, Input, Switch, Select, Message, ConfigProvider } from '@alifd/next';
-import { DIALOG_FORM_LAYOUT, METADATA_SEPARATOR, METADATA_ENTER } from './constant';
+import {request} from '../../../globalLib';
+import {ConfigProvider, Dialog, Form, Input, Message, Select, Switch} from '@alifd/next';
+import {DIALOG_FORM_LAYOUT} from './constant';
 import MonacoEditor from 'components/MonacoEditor';
 
 @ConfigProvider.config
@@ -141,12 +141,15 @@ class EditClusterDialog extends React.Component {
               className="in-text"
               value={defaultCheckPort}
               onChange={defaultCheckPort => this.onChangeCluster({ defaultCheckPort })}
+              disabled={useIPPort4Check}
             />
           </Form.Item>
           <Form.Item label={`${useIpPortCheck}`}>
             <Switch
               checked={useIPPort4Check}
-              onChange={useIPPort4Check => this.onChangeCluster({ useIPPort4Check })}
+              onChange={useIPPort4Check => {
+                this.onChangeCluster({ useIPPort4Check });
+              }}
             />
           </Form.Item>
           {type === 'HTTP' && [

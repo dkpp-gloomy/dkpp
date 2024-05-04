@@ -17,24 +17,24 @@
 import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getParams, request } from '../../../globalLib';
+import {getParams, request} from '../../../globalLib';
 import DiffEditorDialog from '../../../components/DiffEditorDialog';
 import SuccessDialog from '../../../components/SuccessDialog';
 import validateContent from 'utils/validateContent';
 import {
   Balloon,
   Button,
+  ConfigProvider,
   Dialog,
   Field,
   Form,
   Icon,
   Input,
   Loading,
+  Message,
   Radio,
   Select,
   Tab,
-  Message,
-  ConfigProvider,
 } from '@alifd/next';
 
 import './index.scss';
@@ -122,7 +122,7 @@ class ConfigEditor extends React.Component {
           roundedSelection: false,
           readOnly: false,
           lineNumbersMinChars: true,
-          theme: 'vs-dark',
+          theme: 'vs-dark-enhanced',
           wordWrapColumn: 120,
           folding: false,
           showFoldingControls: 'always',
@@ -140,7 +140,7 @@ class ConfigEditor extends React.Component {
         roundedSelection: false,
         readOnly: false,
         lineNumbersMinChars: true,
-        theme: 'vs-dark',
+        theme: 'vs-dark-enhanced',
         wordWrapColumn: 120,
         folding: false,
         showFoldingControls: 'always',
@@ -580,6 +580,7 @@ class ConfigEditor extends React.Component {
       { value: 'yaml', label: 'YAML' },
       { value: 'html', label: 'HTML' },
       { value: 'properties', label: 'Properties' },
+      { value: 'toml', label: 'TOML' },
     ];
     const activeKey = this.state.activeKey.split('-')[0];
 

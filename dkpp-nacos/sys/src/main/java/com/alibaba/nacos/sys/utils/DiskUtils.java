@@ -23,16 +23,7 @@ import org.apache.commons.io.output.NullOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
@@ -44,12 +35,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.zip.CheckedInputStream;
-import java.util.zip.CheckedOutputStream;
-import java.util.zip.Checksum;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
+import java.util.zip.*;
 
 /**
  * IO operates on the utility class.
@@ -64,9 +50,9 @@ public final class DiskUtils {
     
     private static final String NO_SPACE_EN = "No space left on device";
     
-    private static final String DISK_QUATA_CN = "超出磁盘限额";
+    private static final String DISK_QUOTA_CN = "超出磁盘限额";
     
-    private static final String DISK_QUATA_EN = "Disk quota exceeded";
+    private static final String DISK_QUOTA_EN = "Disk quota exceeded";
     
     private static final Charset CHARSET = StandardCharsets.UTF_8;
     
@@ -180,7 +166,8 @@ public final class DiskUtils {
      * @return content
      */
     public static String readFile(File file) {
-        try (FileChannel fileChannel = new FileInputStream(file).getChannel()) {
+        try (FileInputStream fis = new FileInputStream(file);
+                FileChannel fileChannel = fis.getChannel()) {
             StringBuilder text = new StringBuilder();
             ByteBuffer buffer = ByteBuffer.allocate(4096);
             CharBuffer charBuffer = CharBuffer.allocate(4096);
@@ -230,15 +217,16 @@ public final class DiskUtils {
      * @return write success
      */
     public static boolean writeFile(File file, byte[] content, boolean append) {
-        try (FileChannel fileChannel = new FileOutputStream(file, append).getChannel()) {
+        try (FileOutputStream fos = new FileOutputStream(file, append);
+                FileChannel fileChannel = fos.getChannel()) {
             ByteBuffer buffer = ByteBuffer.wrap(content);
             fileChannel.write(buffer);
             return true;
         } catch (IOException ioe) {
             if (ioe.getMessage() != null) {
                 String errMsg = ioe.getMessage();
-                if (NO_SPACE_CN.equals(errMsg) || NO_SPACE_EN.equals(errMsg) || errMsg.contains(DISK_QUATA_CN) || errMsg
-                        .contains(DISK_QUATA_EN)) {
+                if (NO_SPACE_CN.equals(errMsg) || NO_SPACE_EN.equals(errMsg) || errMsg.contains(DISK_QUOTA_CN) || errMsg
+                        .contains(DISK_QUOTA_EN)) {
                     LOGGER.warn("磁盘满，自杀退出");
                     System.exit(0);
                 }

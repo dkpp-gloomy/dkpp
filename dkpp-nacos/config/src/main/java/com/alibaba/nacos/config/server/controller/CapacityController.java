@@ -17,17 +17,15 @@
 package com.alibaba.nacos.config.server.controller;
 
 import com.alibaba.nacos.common.model.RestResult;
+import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.config.server.constant.Constants;
 import com.alibaba.nacos.config.server.model.capacity.Capacity;
+import com.alibaba.nacos.config.server.paramcheck.ConfigDefaultHttpParamExtractor;
 import com.alibaba.nacos.config.server.service.capacity.CapacityService;
-import com.alibaba.nacos.common.utils.StringUtils;
+import com.alibaba.nacos.core.paramcheck.ExtractorManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,6 +36,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping(Constants.CAPACITY_CONTROLLER_PATH)
+@ExtractorManager.Extractor(httpExtractor = ConfigDefaultHttpParamExtractor.class)
 public class CapacityController {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(CapacityController.class);

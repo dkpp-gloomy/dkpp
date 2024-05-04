@@ -16,11 +16,7 @@
 
 package com.alibaba.nacos.common.spi;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.ServiceLoader;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -54,10 +50,7 @@ public class NacosServiceLoader {
     }
     
     private static <T> void cacheServiceClass(final Class<T> service, final T instance) {
-        if (!SERVICES.containsKey(service)) {
-            SERVICES.put(service, new LinkedHashSet<>());
-        }
-        SERVICES.get(service).add(instance.getClass());
+        SERVICES.computeIfAbsent(service, k -> new LinkedHashSet<>()).add(instance.getClass());
     }
     
     /**

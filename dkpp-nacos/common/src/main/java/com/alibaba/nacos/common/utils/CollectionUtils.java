@@ -17,17 +17,7 @@
 package com.alibaba.nacos.common.utils;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Copy from {@link org.apache.commons.collections}.
@@ -303,6 +293,34 @@ public final class CollectionUtils {
             return first;
         }
         throw new IllegalArgumentException(buildExceptionMessage(iterator, first));
+    }
+    
+    /**
+     * check list is equal.
+     *
+     * @param firstList  first list.
+     * @param secondList second list.
+     * @return
+     */
+    public static boolean isListEqual(List<String> firstList, List<String> secondList) {
+        if (firstList == null && secondList == null) {
+            return true;
+        }
+        if (firstList == null || secondList == null) {
+            return false;
+        }
+        
+        if (firstList == secondList) {
+            return true;
+        }
+        
+        if (firstList.size() != secondList.size()) {
+            return false;
+        }
+        
+        boolean flag1 = firstList.containsAll(secondList);
+        boolean flag2 = secondList.containsAll(firstList);
+        return flag1 && flag2;
     }
     
     @SuppressWarnings("PMD.UndefineMagicConstantRule")

@@ -18,10 +18,9 @@ package com.alibaba.nacos.console.controller;
 
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.common.model.RestResult;
-import com.alibaba.nacos.config.server.service.repository.CommonPersistService;
-import com.alibaba.nacos.console.model.Namespace;
-import com.alibaba.nacos.console.model.NamespaceAllInfo;
-import com.alibaba.nacos.console.service.NamespaceOperationService;
+import com.alibaba.nacos.core.namespace.model.Namespace;
+import com.alibaba.nacos.core.namespace.repository.NamespacePersistService;
+import com.alibaba.nacos.core.service.NamespaceOperationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,15 +31,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.matches;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NamespaceControllerTest {
@@ -49,7 +42,7 @@ public class NamespaceControllerTest {
     private NamespaceController namespaceController;
     
     @Mock
-    private CommonPersistService commonPersistService;
+    private NamespacePersistService namespacePersistService;
     
     @Mock
     private NamespaceOperationService namespaceOperationService;
@@ -71,7 +64,7 @@ public class NamespaceControllerTest {
     
     @Test
     public void testGetNamespaceByNamespaceId() throws Exception {
-        NamespaceAllInfo namespace = new NamespaceAllInfo("", "public", 0, 0, 0, "");
+        Namespace namespace = new Namespace("", "public", "", 0, 0, 0);
         when(namespaceOperationService.getNamespace("")).thenReturn(namespace);
         assertEquals(namespace, namespaceController.getNamespace(""));
     }
@@ -80,6 +73,23 @@ public class NamespaceControllerTest {
     public void testCreateNamespaceWithCustomId() throws Exception {
         namespaceController.createNamespace("test-Id", "testName", "testDesc");
         verify(namespaceOperationService).createNamespace("test-Id", "testName", "testDesc");
+    }
+
+    @Test
+    public void testCreateNamespaceWithIllegalName() {
+        assertFalse(namespaceController.createNamespace(null, "test@Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test#Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test$Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test%Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test^Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test&Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test*Name", "testDesc"));
+    }
+
+    @Test
+    public void testCreateNamespaceWithNonUniqueId() throws Exception {
+        when(namespacePersistService.tenantInfoCountByTenantId("test-Id")).thenReturn(1);
+        assertFalse(namespaceController.createNamespace("test-Id", "testNam2", "testDesc"));
     }
     
     @Test
@@ -115,8 +125,8 @@ public class NamespaceControllerTest {
     
     @Test
     public void testCheckNamespaceIdExist() throws Exception {
-        when(commonPersistService.tenantInfoCountByTenantId("public")).thenReturn(1);
-        when(commonPersistService.tenantInfoCountByTenantId("123")).thenReturn(0);
+        when(namespacePersistService.tenantInfoCountByTenantId("public")).thenReturn(1);
+        when(namespacePersistService.tenantInfoCountByTenantId("123")).thenReturn(0);
         assertFalse(namespaceController.checkNamespaceIdExist(""));
         assertTrue(namespaceController.checkNamespaceIdExist("public"));
         assertFalse(namespaceController.checkNamespaceIdExist("123"));
@@ -126,6 +136,17 @@ public class NamespaceControllerTest {
     public void testEditNamespace() {
         namespaceController.editNamespace("test-Id", "testName", "testDesc");
         verify(namespaceOperationService).editNamespace("test-Id", "testName", "testDesc");
+    }
+
+    @Test
+    public void testEditNamespaceWithIllegalName() {
+        assertFalse(namespaceController.createNamespace(null, "test@Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test#Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test$Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test%Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test^Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test&Name", "testDesc"));
+        assertFalse(namespaceController.createNamespace(null, "test*Name", "testDesc"));
     }
     
     @Test

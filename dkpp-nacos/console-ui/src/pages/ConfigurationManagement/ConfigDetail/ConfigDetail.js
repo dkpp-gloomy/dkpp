@@ -15,19 +15,9 @@
  */
 
 import React from 'react';
-import {
-  Button,
-  ConfigProvider,
-  Dialog,
-  Field,
-  Form,
-  Input,
-  Loading,
-  Tab,
-  Grid,
-} from '@alifd/next';
-import { getParams, request } from '../../../globalLib';
-import { generateUrl } from '../../../utils/nacosutil';
+import {Button, ConfigProvider, Dialog, Field, Form, Grid, Input, Loading, Tab,} from '@alifd/next';
+import {getParams, request} from '../../../globalLib';
+import {generateUrl} from '../../../utils/nacosutil';
 import DiffEditorDialog from '../../../components/DiffEditorDialog';
 
 import './index.scss';
@@ -205,7 +195,7 @@ class ConfigDetail extends React.Component {
       roundedSelection: false,
       readOnly: true,
       lineNumbersMinChars: true,
-      theme: 'vs-dark',
+      theme: 'vs-dark-enhanced',
       wordWrapColumn: 120,
       folding: false,
       showFoldingControls: 'always',

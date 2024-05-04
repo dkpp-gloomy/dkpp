@@ -16,19 +16,14 @@
 
 package com.alibaba.nacos.common.packagescan.resource;
 
+import com.alibaba.nacos.common.packagescan.util.AbstractAssert;
 import com.alibaba.nacos.common.packagescan.util.ResourceUtils;
-import com.alibaba.nacos.common.utils.AbstractAssert;
 import com.alibaba.nacos.common.utils.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 
 /**
  * Copy from https://github.com/spring-projects/spring-framework.git, with less modifications

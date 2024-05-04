@@ -28,12 +28,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NacosDelayTaskExecuteEngineTest {
@@ -90,6 +86,7 @@ public class NacosDelayTaskExecuteEngineTest {
         TimeUnit.MILLISECONDS.sleep(200);
         verify(testTaskProcessor).process(abstractTask);
         verify(taskProcessor, never()).process(abstractTask);
+        assertEquals(1, nacosDelayTaskExecuteEngine.getAllProcessorKey().size());
     }
     
     @Test
@@ -109,5 +106,40 @@ public class NacosDelayTaskExecuteEngineTest {
         nacosDelayTaskExecuteEngine.addTask("test", abstractTask);
         TimeUnit.MILLISECONDS.sleep(300);
         verify(taskProcessor, new Times(2)).process(abstractTask);
+    }
+    
+    @Test
+    public void testProcessorWithException() throws InterruptedException {
+        when(taskProcessor.process(abstractTask)).thenThrow(new RuntimeException("test"));
+        nacosDelayTaskExecuteEngine.addProcessor("test", testTaskProcessor);
+        nacosDelayTaskExecuteEngine.removeProcessor("test");
+        nacosDelayTaskExecuteEngine.addTask("test", abstractTask);
+        TimeUnit.MILLISECONDS.sleep(200);
+        assertEquals(1, nacosDelayTaskExecuteEngine.size());
+    }
+    
+    @Test
+    public void testTaskShouldNotExecute() throws InterruptedException {
+        nacosDelayTaskExecuteEngine.addProcessor("test", testTaskProcessor);
+        nacosDelayTaskExecuteEngine.addTask("test", abstractTask);
+        abstractTask.setTaskInterval(10000L);
+        abstractTask.setLastProcessTime(System.currentTimeMillis());
+        TimeUnit.MILLISECONDS.sleep(200);
+        verify(testTaskProcessor, never()).process(abstractTask);
+        assertEquals(1, nacosDelayTaskExecuteEngine.size());
+    }
+    
+    @Test
+    public void testTaskMerge() {
+        nacosDelayTaskExecuteEngine.addProcessor("test", testTaskProcessor);
+        nacosDelayTaskExecuteEngine.addTask("test", abstractTask);
+        nacosDelayTaskExecuteEngine.addTask("test", new AbstractDelayTask() {
+            @Override
+            public void merge(AbstractDelayTask task) {
+                setLastProcessTime(task.getLastProcessTime());
+                setTaskInterval(task.getTaskInterval());
+            }
+        });
+        assertEquals(1, nacosDelayTaskExecuteEngine.size());
     }
 }

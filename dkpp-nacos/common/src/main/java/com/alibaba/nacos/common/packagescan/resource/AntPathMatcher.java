@@ -16,15 +16,11 @@
 
 package com.alibaba.nacos.common.packagescan.resource;
 
+import com.alibaba.nacos.common.packagescan.util.AbstractAssert;
 import com.alibaba.nacos.common.packagescan.util.PathMatcher;
-import com.alibaba.nacos.common.utils.AbstractAssert;
 import com.alibaba.nacos.common.utils.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -22,11 +22,7 @@ import com.alibaba.nacos.consistency.cp.RequestProcessor4CP;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * raft config.
@@ -34,7 +30,7 @@ import java.util.Set;
  * @author <a href="mailto:liaochuntao@live.com">liaochuntao</a>
  */
 @Component
-@ConfigurationProperties(prefix = "nacos.core.protocol.raft")
+@ConfigurationProperties(prefix = RaftSysConstants.RAFT_CONFIG_PREFIX)
 public class RaftConfig implements Config<RequestProcessor4CP> {
     
     private static final long serialVersionUID = 9174789390266064002L;
@@ -98,7 +94,7 @@ public class RaftConfig implements Config<RequestProcessor4CP> {
     @Override
     public String toString() {
         try {
-            return JacksonUtils.toJson(data);
+            return JacksonUtils.toJson(this);
         } catch (Exception e) {
             return String.valueOf(data);
         }

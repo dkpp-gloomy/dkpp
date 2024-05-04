@@ -16,9 +16,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { request } from '../../../globalLib';
-import { Dialog, Form, Input, Switch, Message, ConfigProvider } from '@alifd/next';
-import { DIALOG_FORM_LAYOUT, METADATA_ENTER, METADATA_SEPARATOR } from './constant';
+import {request} from '../../../globalLib';
+import {ConfigProvider, Dialog, Form, Input, Message, Switch} from '@alifd/next';
+import {DIALOG_FORM_LAYOUT} from './constant';
 import MonacoEditor from 'components/MonacoEditor';
 
 @ConfigProvider.config
@@ -29,8 +29,8 @@ class EditInstanceDialog extends React.Component {
     serviceName: PropTypes.string,
     clusterName: PropTypes.string,
     groupName: PropTypes.string,
-    openLoading: PropTypes.string,
-    closeLoading: PropTypes.string,
+    openLoading: PropTypes.func,
+    closeLoading: PropTypes.func,
     getInstanceList: PropTypes.func,
     locale: PropTypes.object,
   };

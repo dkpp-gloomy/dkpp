@@ -20,8 +20,8 @@ import com.alibaba.nacos.common.notify.NotifyCenter;
 import com.alibaba.nacos.common.utils.ExceptionUtil;
 import com.alibaba.nacos.common.utils.JacksonUtils;
 import com.alibaba.nacos.common.utils.LoggerUtils;
-import com.alibaba.nacos.consistency.RequestProcessor;
 import com.alibaba.nacos.consistency.ProtoMessageUtil;
+import com.alibaba.nacos.consistency.RequestProcessor;
 import com.alibaba.nacos.consistency.cp.RequestProcessor4CP;
 import com.alibaba.nacos.consistency.entity.ReadRequest;
 import com.alibaba.nacos.consistency.entity.Response;
@@ -33,11 +33,8 @@ import com.alibaba.nacos.consistency.snapshot.SnapshotOperation;
 import com.alibaba.nacos.consistency.snapshot.Writer;
 import com.alibaba.nacos.core.distributed.raft.utils.JRaftUtils;
 import com.alibaba.nacos.core.utils.Loggers;
-import com.alipay.sofa.jraft.Closure;
 import com.alipay.sofa.jraft.Iterator;
-import com.alipay.sofa.jraft.Node;
-import com.alipay.sofa.jraft.RouteTable;
-import com.alipay.sofa.jraft.Status;
+import com.alipay.sofa.jraft.*;
 import com.alipay.sofa.jraft.conf.Configuration;
 import com.alipay.sofa.jraft.core.StateMachineAdapter;
 import com.alipay.sofa.jraft.entity.LeaderChangeContext;
@@ -49,15 +46,7 @@ import com.alipay.sofa.jraft.storage.snapshot.SnapshotWriter;
 import com.google.protobuf.Message;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiConsumer;
 
@@ -268,7 +257,7 @@ class NacosStateMachine extends StateMachineAdapter {
                     // components from implementing snapshots
                     
                     final BiConsumer<Boolean, Throwable> callFinally = (result, t) -> {
-                        boolean[] results = new boolean[wCtx.listFiles().size()];
+                        Boolean[] results = new Boolean[wCtx.listFiles().size()];
                         int[] index = new int[] {0};
                         wCtx.listFiles().forEach((file, meta) -> {
                             try {
@@ -278,7 +267,7 @@ class NacosStateMachine extends StateMachineAdapter {
                             }
                         });
                         final Status status = result
-                                && !Arrays.asList(results).stream().anyMatch(Boolean.FALSE::equals) ? Status.OK()
+                                && Arrays.stream(results).allMatch(Boolean.TRUE::equals) ? Status.OK()
                                 : new Status(RaftError.EIO, "Fail to compress snapshot at %s, error is %s",
                                         writer.getPath(), t == null ? "" : t.getMessage());
                         done.run(status);

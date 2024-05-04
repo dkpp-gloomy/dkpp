@@ -21,11 +21,7 @@ import com.alibaba.nacos.common.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Module State Holder.
@@ -43,6 +39,9 @@ public class ModuleStateHolder {
     private ModuleStateHolder() {
         this.moduleStates = new HashMap<>();
         for (ModuleStateBuilder each : NacosServiceLoader.load(ModuleStateBuilder.class)) {
+            if (each.isIgnore()) {
+                continue;
+            }
             try {
                 ModuleState moduleState = each.build();
                 moduleStates.put(moduleState.getModuleName(), moduleState);

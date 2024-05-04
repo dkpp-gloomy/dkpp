@@ -18,11 +18,7 @@ package com.alibaba.nacos.api.annotation;
 
 import com.alibaba.nacos.api.PropertyKeyConst;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * An annotation for Nacos Properties.
@@ -138,7 +134,7 @@ public @interface NacosProperties {
     String SERVER_ADDR_PLACEHOLDER = "${" + PREFIX + SERVER_ADDR + ":}";
     
     /**
-     * The placeholder of endpoint, the value is ${nacos.context-path:}".
+     * The placeholder of endpoint, the value is ${nacos.context-path:}.
      */
     String CONTEXT_PATH_PLACEHOLDER = "${" + PREFIX + CONTEXT_PATH + ":}";
     

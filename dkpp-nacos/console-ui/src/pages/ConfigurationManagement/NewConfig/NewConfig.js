@@ -18,11 +18,12 @@ import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
 import SuccessDialog from '../../../components/SuccessDialog';
-import { getParams, setParams, request } from '../../../globalLib';
-import { generateUrl } from '../../../utils/nacosutil';
+import {getParams, request, setParams} from '../../../globalLib';
+import {generateUrl} from '../../../utils/nacosutil';
 import {
   Balloon,
   Button,
+  ConfigProvider,
   Dialog,
   Field,
   Form,
@@ -30,9 +31,8 @@ import {
   Input,
   Loading,
   Message,
-  Select,
   Radio,
-  ConfigProvider,
+  Select,
 } from '@alifd/next';
 import validateContent from 'utils/validateContent';
 
@@ -130,7 +130,7 @@ class NewConfig extends React.Component {
       roundedSelection: false,
       readOnly: false,
       lineNumbersMinChars: true,
-      theme: 'vs-dark',
+      theme: 'vs-dark-enhanced',
       folding: true,
       showFoldingControls: 'always',
       cursorStyle: 'line',
@@ -458,6 +458,10 @@ class NewConfig extends React.Component {
         value: 'properties',
         label: 'Properties',
       },
+      {
+        value: 'toml',
+        label: 'TOML',
+      },
     ];
     const { editorClass } = this.state;
 
@@ -472,7 +476,7 @@ class NewConfig extends React.Component {
         <h1>{locale.newListing}</h1>
         <Form className="new-config-form" field={this.field} {...formItemLayout}>
           <Form.Item label={locale.namespace} required>
-            <p>{this.tenant}</p>
+            <p>{this.tenant ? this.tenant : 'public'}</p>
           </Form.Item>
           <FormItem label={'Data ID'} required>
             <Input

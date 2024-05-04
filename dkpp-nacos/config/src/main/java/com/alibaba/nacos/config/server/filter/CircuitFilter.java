@@ -21,8 +21,6 @@ import com.alibaba.nacos.common.notify.NotifyCenter;
 import com.alibaba.nacos.common.notify.listener.SmartSubscriber;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.alibaba.nacos.common.utils.ExceptionUtil;
-import com.alibaba.nacos.config.server.constant.Constants;
-import com.alibaba.nacos.config.server.model.event.RaftDbErrorEvent;
 import com.alibaba.nacos.config.server.model.event.RaftDbErrorRecoverEvent;
 import com.alibaba.nacos.consistency.ProtocolMetaData;
 import com.alibaba.nacos.consistency.cp.CPProtocol;
@@ -30,14 +28,12 @@ import com.alibaba.nacos.consistency.cp.MetadataKey;
 import com.alibaba.nacos.core.cluster.Member;
 import com.alibaba.nacos.core.cluster.MemberMetaDataConstants;
 import com.alibaba.nacos.core.cluster.ServerMemberManager;
+import com.alibaba.nacos.persistence.constants.PersistenceConstant;
+import com.alibaba.nacos.persistence.model.event.RaftDbErrorEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -108,7 +104,7 @@ public class CircuitFilter implements Filter {
     }
     
     private void listenerSelfInCluster() {
-        protocol.protocolMetaData().subscribe(Constants.CONFIG_MODEL_RAFT_GROUP, MetadataKey.RAFT_GROUP_MEMBER, o -> {
+        protocol.protocolMetaData().subscribe(PersistenceConstant.CONFIG_MODEL_RAFT_GROUP, MetadataKey.RAFT_GROUP_MEMBER, o -> {
             if (!(o instanceof ProtocolMetaData.ValueItem)) {
                 return;
             }

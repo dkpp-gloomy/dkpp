@@ -28,11 +28,7 @@ import com.alibaba.nacos.naming.misc.Loggers;
 import com.alibaba.nacos.naming.misc.UtilsAndCommons;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
@@ -62,21 +58,20 @@ public class ClientAttributesFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        String uri = request.getRequestURI();
+        String method = request.getMethod();
         try {
             try {
-                if ((UtilsAndCommons.NACOS_SERVER_CONTEXT + UtilsAndCommons.NACOS_NAMING_CONTEXT
-                        + UtilsAndCommons.NACOS_NAMING_INSTANCE_CONTEXT).equals(request.getRequestURI())
-                        && request.getMethod().equals(HttpMethod.POST)) {
+                if (isRegisterInstanceUri(uri, method)) {
                     //register
                     ClientAttributes requestClientAttributes = getClientAttributes(request);
                     threadLocalClientAttributes.set(requestClientAttributes);
-                } else if ((UtilsAndCommons.NACOS_SERVER_CONTEXT + UtilsAndCommons.NACOS_NAMING_CONTEXT
-                        + UtilsAndCommons.NACOS_NAMING_INSTANCE_CONTEXT + BEAT_URI).equals(request.getRequestURI())) {
+                } else if (isBeatUri(uri, method)) {
                     //beat
                     String ip = WebUtils.optional(request, IP, StringUtils.EMPTY);
                     int port = Integer.parseInt(WebUtils.optional(request, PORT, ZERO));
-                    String clientId = IpPortBasedClient.getClientId(ip + InternetAddressUtil.IP_PORT_SPLITER + port,
-                            true);
+                    String clientId = IpPortBasedClient
+                            .getClientId(ip + InternetAddressUtil.IP_PORT_SPLITER + port, true);
                     IpPortBasedClient client = (IpPortBasedClient) clientManager.getClient(clientId);
                     if (client != null) {
                         ClientAttributes requestClientAttributes = getClientAttributes(request);
@@ -99,6 +94,21 @@ public class ClientAttributesFilter implements Filter {
                 threadLocalClientAttributes.remove();
             }
         }
+    }
+    
+    private boolean isBeatUri(String uri, String httpMethod) {
+        return ((UtilsAndCommons.NACOS_SERVER_CONTEXT + UtilsAndCommons.NACOS_NAMING_CONTEXT
+                + UtilsAndCommons.NACOS_NAMING_INSTANCE_CONTEXT + BEAT_URI).equals(uri) || (
+                UtilsAndCommons.NACOS_SERVER_CONTEXT + UtilsAndCommons.DEFAULT_NACOS_NAMING_CONTEXT_V2
+                        + UtilsAndCommons.NACOS_NAMING_INSTANCE_CONTEXT + BEAT_URI).equals(uri)) && HttpMethod.PUT
+                .equals(httpMethod);
+    }
+    
+    private boolean isRegisterInstanceUri(String uri, String httpMethod) {
+        return ((UtilsAndCommons.NACOS_SERVER_CONTEXT + UtilsAndCommons.NACOS_NAMING_CONTEXT
+                + UtilsAndCommons.NACOS_NAMING_INSTANCE_CONTEXT).equals(uri) || (UtilsAndCommons.NACOS_SERVER_CONTEXT
+                + UtilsAndCommons.DEFAULT_NACOS_NAMING_CONTEXT_V2 + UtilsAndCommons.NACOS_NAMING_INSTANCE_CONTEXT)
+                .equals(uri)) && HttpMethod.POST.equals(httpMethod);
     }
     
     private static boolean canUpdateClientAttributes(IpPortBasedClient client,

@@ -18,8 +18,8 @@ package com.alibaba.nacos.client.logging;
 
 import com.alibaba.nacos.client.logging.log4j2.Log4J2NacosLogging;
 import com.alibaba.nacos.client.logging.logback.LogbackNacosLogging;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * nacos logging.
@@ -60,11 +60,8 @@ public class NacosLogging {
         try {
             nacosLogging.loadConfiguration();
         } catch (Throwable t) {
-            if (isLogback) {
-                LOGGER.warn("Load Logback Configuration of Nacos fail, message: {}", t.getMessage());
-            } else {
-                LOGGER.warn("Load Log4j Configuration of Nacos fail, message: {}", t.getMessage());
-            }
+            String loggerName = isLogback ? "Logback" : "Log4j";
+            LOGGER.warn("Load {} Configuration of Nacos fail, message: {}", loggerName, t.getMessage());
         }
     }
 }

@@ -23,14 +23,7 @@ import com.alibaba.nacos.core.utils.Loggers;
 import com.alibaba.nacos.sys.env.EnvUtil;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -66,6 +59,7 @@ public class MemberUtil {
         oldMember.setExtendInfo(newMember.getExtendInfo());
         oldMember.setAddress(newMember.getAddress());
         oldMember.setAbilities(newMember.getAbilities());
+        oldMember.setGrpcReportEnabled(newMember.isGrpcReportEnabled());
     }
     
     /**
@@ -94,6 +88,8 @@ public class MemberUtil {
         extendInfo.put(MemberMetaDataConstants.RAFT_PORT, String.valueOf(calculateRaftPort(target)));
         extendInfo.put(MemberMetaDataConstants.READY_TO_UPGRADE, true);
         target.setExtendInfo(extendInfo);
+        // use grpc to report default
+        target.setGrpcReportEnabled(true);
         return target;
     }
     
@@ -107,7 +103,10 @@ public class MemberUtil {
         if (member.getAbilities() == null || member.getAbilities().getRemoteAbility() == null) {
             return false;
         }
-        return member.getAbilities().getRemoteAbility().isSupportRemoteConnection();
+        
+        boolean oldVerJudge = member.getAbilities().getRemoteAbility().isSupportRemoteConnection();
+        
+        return member.isGrpcReportEnabled() || oldVerJudge;
     }
     
     public static int calculateRaftPort(Member member) {
@@ -275,8 +274,9 @@ public class MemberUtil {
         if (!expected.getState().equals(actual.getState())) {
             return true;
         }
-        
-        if (!expected.getAbilities().equals(actual.getAbilities())) {
+    
+        // if change
+        if (expected.isGrpcReportEnabled() != actual.isGrpcReportEnabled()) {
             return true;
         }
         

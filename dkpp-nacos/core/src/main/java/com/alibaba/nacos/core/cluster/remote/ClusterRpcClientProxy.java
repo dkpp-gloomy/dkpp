@@ -37,11 +37,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.alibaba.nacos.api.exception.NacosException.CLIENT_INVALID_PARAM;
@@ -98,7 +94,10 @@ public class ClusterRpcClientProxy extends MemberChangeListener {
             Map.Entry<String, RpcClient> next1 = iterator.next();
             if (next1.getKey().startsWith("Cluster-") && !newMemberKeys.contains(next1.getKey())) {
                 Loggers.CLUSTER.info("member leave,destroy client of member - > : {}", next1.getKey());
-                RpcClientFactory.getClient(next1.getKey()).shutdown();
+                RpcClient client = RpcClientFactory.getClient(next1.getKey());
+                if (client != null) {
+                    RpcClientFactory.getClient(next1.getKey()).shutdown();
+                }
                 iterator.remove();
             }
         }

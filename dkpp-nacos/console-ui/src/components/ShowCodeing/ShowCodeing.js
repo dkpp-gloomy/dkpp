@@ -16,8 +16,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getParams } from '../../globalLib';
-import { ConfigProvider, Dialog, Loading, Tab } from '@alifd/next';
+import {getParams} from '../../globalLib';
+import {ConfigProvider, Dialog, Loading, Tab} from '@alifd/next';
 
 import './index.scss';
 
@@ -165,7 +165,7 @@ public class ConfigExample {
 		configService.addListener(dataId, group, new Listener() {
 			@Override
 			public void receiveConfigInfo(String configInfo) {
-				System.out.println("recieve:" + configInfo);
+				System.out.println("receive:" + configInfo);
 			}
 
 			@Override
@@ -276,7 +276,7 @@ class Program
     {
         public void ReceiveConfigInfo(string configInfo)
         {
-            Console.WriteLine("recieve:" + configInfo);
+            Console.WriteLine("receive:" + configInfo);
         }
     }
 }

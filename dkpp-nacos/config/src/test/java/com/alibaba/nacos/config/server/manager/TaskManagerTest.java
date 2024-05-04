@@ -29,14 +29,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TaskManagerTest {
@@ -119,7 +116,7 @@ public class TaskManagerTest {
         taskManager.addProcessor("test", testTaskProcessor);
         when(testTaskProcessor.process(abstractTask)).thenReturn(true);
         taskManager.addTask("test", abstractTask);
-        assertEquals("test:Thu Jan 01 08:00:00 CST 1970" + Constants.NACOS_LINE_SEPARATOR, taskManager.getTaskInfos());
+        assertEquals("test:" + new Date(0) + Constants.NACOS_LINE_SEPARATOR, taskManager.getTaskInfos());
         TimeUnit.MILLISECONDS.sleep(150);
         assertEquals("test:finished" + Constants.NACOS_LINE_SEPARATOR, taskManager.getTaskInfos());
     }
@@ -127,7 +124,8 @@ public class TaskManagerTest {
     @Test
     public void testInit() throws Exception {
         taskManager.init();
-        ObjectName oName = new ObjectName(TaskManagerTest.class.getName() + ":type=" + TaskManager.class.getSimpleName());
+        ObjectName oName = new ObjectName(
+                TaskManagerTest.class.getName() + ":type=" + TaskManager.class.getSimpleName());
         assertTrue(ManagementFactory.getPlatformMBeanServer().isRegistered(oName));
     }
 }

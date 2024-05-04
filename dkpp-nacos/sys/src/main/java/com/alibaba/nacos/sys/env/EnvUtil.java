@@ -29,22 +29,10 @@ import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Its own configuration information manipulation tool class.
@@ -103,11 +91,11 @@ public class EnvUtil {
     private static final String NACOS_TEMP_DIR_1 = "data";
     
     private static final String NACOS_TEMP_DIR_2 = "tmp";
-
+    
     private static final String NACOS_CUSTOM_ENVIRONMENT_ENABLED = "nacos.custom.environment.enabled";
-
+    
     private static final String NACOS_CUSTOM_CONFIG_NAME = "customFirstNacosConfig";
-
+    
     @JustForTest
     private static String confPath = "";
     
@@ -115,7 +103,7 @@ public class EnvUtil {
     private static String nacosHomePath = null;
     
     private static ConfigurableEnvironment environment;
-
+    
     /**
      * customEnvironment.
      */
@@ -127,12 +115,13 @@ public class EnvUtil {
             for (String key : propertyKeys) {
                 sourcePropertyMap.put(key, getProperty(key, Object.class));
             }
-            Map<String, Object> targetMap = CustomEnvironmentPluginManager.getInstance().getCustomValues(sourcePropertyMap);
+            Map<String, Object> targetMap = CustomEnvironmentPluginManager.getInstance()
+                    .getCustomValues(sourcePropertyMap);
             MutablePropertySources propertySources = environment.getPropertySources();
             propertySources.addFirst(new MapPropertySource(NACOS_CUSTOM_CONFIG_NAME, targetMap));
         }
     }
-
+    
     public static ConfigurableEnvironment getEnvironment() {
         return environment;
     }
@@ -201,6 +190,10 @@ public class EnvUtil {
     
     public static void setLocalAddress(String localAddress) {
         EnvUtil.localAddress = localAddress;
+    }
+    
+    public static void systemExit() {
+        System.exit(0);
     }
     
     public static int getPort() {
@@ -302,8 +295,8 @@ public class EnvUtil {
     }
     
     public static float getMem() {
-        return (float) (1 - OperatingSystemBeanManager.getFreePhysicalMem() / OperatingSystemBeanManager
-                .getTotalPhysicalMem());
+        return (float) (1
+                - OperatingSystemBeanManager.getFreePhysicalMem() / OperatingSystemBeanManager.getTotalPhysicalMem());
     }
     
     public static String getConfPath() {
@@ -329,7 +322,7 @@ public class EnvUtil {
      * @throws IOException ioexception {@link IOException}
      */
     public static List<String> readClusterConf() throws IOException {
-        try (Reader reader = new InputStreamReader(new FileInputStream(new File(getClusterConfFilePath())),
+        try (Reader reader = new InputStreamReader(new FileInputStream(getClusterConfFilePath()),
                 StandardCharsets.UTF_8)) {
             return analyzeClusterConf(reader);
         } catch (FileNotFoundException ignore) {

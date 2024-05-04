@@ -17,16 +17,11 @@
 package com.alibaba.nacos.core.cluster;
 
 import com.alibaba.nacos.api.ability.ServerAbilities;
+import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.core.utils.Loggers;
 import com.alibaba.nacos.sys.env.EnvUtil;
-import com.alibaba.nacos.common.utils.StringUtils;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
@@ -53,7 +48,10 @@ public class Member implements Comparable<Member>, Cloneable, Serializable {
     
     private transient int failAccessCnt = 0;
     
+    @Deprecated
     private ServerAbilities abilities = new ServerAbilities();
+    
+    private boolean grpcReportEnabled;
     
     public Member() {
         String prefix = "nacos.core.member.meta.";
@@ -65,10 +63,20 @@ public class Member implements Comparable<Member>, Cloneable, Serializable {
                 .put(MemberMetaDataConstants.WEIGHT, EnvUtil.getProperty(prefix + MemberMetaDataConstants.WEIGHT, "1"));
     }
     
+    public boolean isGrpcReportEnabled() {
+        return grpcReportEnabled;
+    }
+    
+    public void setGrpcReportEnabled(boolean grpcReportEnabled) {
+        this.grpcReportEnabled = grpcReportEnabled;
+    }
+    
+    @Deprecated
     public ServerAbilities getAbilities() {
         return abilities;
     }
     
+    @Deprecated
     public void setAbilities(ServerAbilities abilities) {
         this.abilities = abilities;
     }

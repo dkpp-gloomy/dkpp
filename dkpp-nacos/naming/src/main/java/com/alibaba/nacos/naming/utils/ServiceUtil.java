@@ -25,14 +25,7 @@ import com.alibaba.nacos.naming.pojo.Subscriber;
 import com.alibaba.nacos.naming.selector.SelectorManager;
 import com.alibaba.nacos.sys.utils.ApplicationUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -198,6 +191,7 @@ public final class ServiceUtil {
             // will re-compute healthCount
             long newHealthyCount = healthyCount;
             if (originalTotal != allInstances.size()) {
+                newHealthyCount = 0L;
                 for (com.alibaba.nacos.api.naming.pojo.Instance allInstance : allInstances) {
                     if (allInstance.isHealthy()) {
                         newHealthyCount++;

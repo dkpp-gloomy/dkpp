@@ -8,11 +8,37 @@
     <artifactId>dkpp</artifactId>
     <version>${dkpp.version}</version>
     <name>dkpp</name>
+    <description>dkpp</description>
+    <packaging>pom</packaging>
+
     <modules>
         <module>dkpp-nacos</module>
+        <module>dkpp-authorization</module>
     </modules>
-    <packaging>pom</packaging>
-    <description>dkpp</description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
 
     <licenses>
         <license>
@@ -28,11 +54,11 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Spring Cloud -->
-        <spring.cloud.version>2022.0.0</spring.cloud.version>
+        <spring.cloud.version>2023.0.1</spring.cloud.version>
         <!-- Spring Cloud Alibaba -->
-        <spring.cloud.alibaba.version>2022.0.0.0</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2023.0.1.0</spring.cloud.alibaba.version>
         <!-- Spring Boot -->
-        <spring-boot.version>3.0.2</spring-boot.version>
+        <spring-boot.version>3.2.4</spring-boot.version>
     </properties>
 
     <dependencyManagement>

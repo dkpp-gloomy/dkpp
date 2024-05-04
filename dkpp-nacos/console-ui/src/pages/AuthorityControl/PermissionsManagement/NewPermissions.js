@@ -16,10 +16,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, Form, Input, Select, Dialog, ConfigProvider } from '@alifd/next';
-import { connect } from 'react-redux';
-import { getNamespaces } from '../../../reducers/namespace';
-import { searchRoles } from '../../../reducers/authority';
+import {ConfigProvider, Dialog, Field, Form, Select} from '@alifd/next';
+import {connect} from 'react-redux';
+import {getNamespaces} from '../../../reducers/namespace';
+import {searchRoles} from '../../../reducers/authority';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -117,8 +117,8 @@ class NewPermissions extends React.Component {
                 placeholder={locale.resourcePlaceholder}
                 style={{ width: '100%' }}
               >
-                {namespaces.map(({ namespace, namespaceShowName }) => (
-                  <Option value={`${namespace}:*:*`}>
+                {namespaces.map(({ namespace, namespaceShowName }, index) => (
+                  <Option key={index} value={`${namespace}:*:*`}>
                     {namespaceShowName} {namespace ? `(${namespace})` : ''}
                   </Option>
                 ))}

@@ -20,11 +20,7 @@ package com.alibaba.nacos.naming.remote.udp;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.remote.PushCallBack;
 import com.alibaba.nacos.sys.env.EnvUtil;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -91,7 +87,7 @@ public class UdpConnectorTest {
     
     @Test
     public void testContainAck() {
-        when(ackMap.containsKey(Mockito.anyString())).thenReturn(true);
+        when(ackMap.containsKey("1111")).thenReturn(true);
         Assert.assertTrue(udpConnector.containAck("1111"));
     }
     

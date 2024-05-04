@@ -16,11 +16,7 @@
 
 package com.alibaba.nacos.client.naming.utils;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Provides utility methods and decorators for {@link Collection} instances.
@@ -47,12 +43,6 @@ public class CollectionUtils {
      * Constant to avoid repeated object creation.
      */
     private static final Integer INTEGER_ONE = 1;
-    
-    /**
-     * <code>CollectionUtils</code> should not normally be instantiated.
-     */
-    public CollectionUtils() {
-    }
     
     /**
      * Returns a new {@link Collection} containing <tt><i>a</i> - <i>b</i></tt>. The cardinality of each element

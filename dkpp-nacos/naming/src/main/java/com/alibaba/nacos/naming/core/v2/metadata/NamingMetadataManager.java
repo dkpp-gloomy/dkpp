@@ -27,11 +27,7 @@ import com.alibaba.nacos.naming.core.v2.event.publisher.NamingEventPublisherFact
 import com.alibaba.nacos.naming.core.v2.pojo.Service;
 import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -127,10 +123,7 @@ public class NamingMetadataManager extends SmartSubscriber {
      * @param instanceMetadata new instance metadata
      */
     public void updateInstanceMetadata(Service service, String metadataId, InstanceMetadata instanceMetadata) {
-        if (!instanceMetadataMap.containsKey(service)) {
-            instanceMetadataMap.putIfAbsent(service, new ConcurrentHashMap<>(INITIAL_CAPACITY));
-        }
-        instanceMetadataMap.get(service).put(metadataId, instanceMetadata);
+        instanceMetadataMap.computeIfAbsent(service, k -> new ConcurrentHashMap<>(INITIAL_CAPACITY)).put(metadataId, instanceMetadata);
     }
     
     /**
@@ -192,7 +185,8 @@ public class NamingMetadataManager extends SmartSubscriber {
      */
     public void loadServiceMetadataSnapshot(ConcurrentMap<Service, ServiceMetadata> snapshot) {
         for (Service each : snapshot.keySet()) {
-            ServiceManager.getInstance().getSingleton(each);
+            Service  service = Service.newService(each.getNamespace(), each.getGroup(), each.getName(), each.isEphemeral());
+            ServiceManager.getInstance().getSingleton(service);
         }
         ConcurrentMap<Service, ServiceMetadata> oldSnapshot = serviceMetadataMap;
         serviceMetadataMap = snapshot;
